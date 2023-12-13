@@ -63,6 +63,7 @@ void arch_task_switch(struct task *prev, struct task *next) {
     // 割り込みハンドラで使うカーネルスタックを切り替える。システムコールハンドラ内で
     // スリープ状態に入ることがあるため、タスクごとに実行コンテキストを保持する専用の
     // カーネルスタックが必要。
+    // CPUVAR: CPU ローカル変数
     CPUVAR->arch.sp_top = next->arch.sp_top;
 
     // ページテーブルを切り替えてTLBをフラッシュする。satpレジスタに書き込む前に一度
