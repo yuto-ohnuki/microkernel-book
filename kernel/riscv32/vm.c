@@ -126,6 +126,7 @@ bool riscv32_is_mapped(uint32_t satp, vaddr_t vaddr) {
 // ページテーブルを初期化する。
 error_t arch_vm_init(struct arch_vm *vm) {
     // ページテーブル (1段目) を割り当てる
+    // pm_alloc: 物理メモリを割り当てる関数
     vm->table = pm_alloc(PAGE_SIZE, NULL, PM_ALLOC_ZEROED);
     if (!vm->table) {
         return ERR_NO_MEMORY;

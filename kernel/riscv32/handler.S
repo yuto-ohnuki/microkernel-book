@@ -6,6 +6,8 @@
 riscv32_trap_handler:
     csrrw tp, sscratch, tp     // tpレジスタの値をsscratchに退避し、そこに入っていた
                                // cpuvarのアドレスをtpに設定。
+                               // sscratch: 割り込みハンドラに必要なデータを保持する変数。CPUローカル変数のアドレス情報
+                               // csrrw命令: レジスタの読み書きを一度に行う命令
     sw a0, CPUVAR_SSCRATCH(tp) // a0レジスタの値を退避。
 
 
